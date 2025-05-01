@@ -1,2 +1,2 @@
 build:
-	gcc test.c -L./target/release -lartcis_bat -ludev
+	gcc main.c -L./target/release -lartcis_bat -ludev
