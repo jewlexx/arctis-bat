@@ -1,0 +1,12 @@
+[package]
+name = "artcis-bat"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["staticlib", "lib"]
+
+[dependencies]
+hidapi = "2.6.3"
+thiserror = "2.0.12"
+tray-icon = "0.20.1"
