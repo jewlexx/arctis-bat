@@ -4,7 +4,11 @@
 #include "header.h"
 
 int main() {
+    printf("Initializing!");
+
     DeviceInfo device = initialize_device();
+
+    printf("Initialized!");
 
     DeviceStatus *status = malloc(sizeof(DeviceStatus));
 
