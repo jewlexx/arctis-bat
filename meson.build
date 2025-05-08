@@ -1,6 +1,6 @@
 project('arctis-bat', 'c')
 
-hidapi_dep = dependency('hidapi-libusb')
+hidapi_dep = dependency('hidapi-hidraw')
 
 lib = static_library('device-code', 'device.c')
 
