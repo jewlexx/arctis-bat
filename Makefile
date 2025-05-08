@@ -1,5 +1,5 @@
-build:
-	gcc main.c -L./target/release -lartcis_bat -ludev
+build: main.o device.a
+	gcc -o main $^ -lhidapi-hidraw
 
 main.o: main.c
 	gcc -c $< -o $@

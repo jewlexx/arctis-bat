@@ -4,3 +4,6 @@
 *.o
 *.so
 *.out
+
+main
+main.exe
