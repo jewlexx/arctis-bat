@@ -17,8 +17,19 @@ int get_device_status(hid_device *handle, device_status *status)
         return -1;
     }
 
-    status->status = (enum charging_status)buf[3];
+    status->status = (charging_status)buf[3];
     status->battery_level = ((float)buf[2] / 4.0f) * 100.0f;
 
     return 0;
+}
+
+char* get_pretty_charging_status(charging_status status) {
+    switch (status) {
+        case CHARGING:
+            return "Charging";
+        case DISCHARGING:
+            return "Discharging";
+        default:
+            return "Disconnected";
+    }
 }
