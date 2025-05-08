@@ -2,7 +2,7 @@
 
 #include "device.h"
 
-int get_device_status(hid_device *handle, struct device_status *status)
+int get_device_status(hid_device *handle, device_status *status)
 {
     unsigned char buf[4];
     int res;

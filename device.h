@@ -11,9 +11,9 @@ enum charging_status
     DISCHARGING = 0x03,
 };
 
-struct device_status {
+typedef struct {
     enum charging_status status;
     float battery_level;
-};
+} device_status;
 
-int get_device_status(hid_device *handle, struct device_status *status);
+int get_device_status(hid_device *handle, device_status *status);

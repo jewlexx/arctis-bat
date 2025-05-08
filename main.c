@@ -34,7 +34,7 @@ int main(int argc, char* argv[])
 	res = hid_get_product_string(handle, wstr, MAX_STR);
 	printf("Product String: %ls\n", wstr);
 
-	struct device_status status = {};
+	device_status status = {};
 
     if (get_device_status(handle, &status) < 0) {
         printf("Failed to get device status\n");
