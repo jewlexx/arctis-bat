@@ -10,7 +10,7 @@
 
 int main(int argc, char* argv[])
 {
-	int res;
+	int res = 0;
 
 	// Initialize the hidapi library
 	res = hid_init();
@@ -53,6 +53,5 @@ int main(int argc, char* argv[])
 	// Finalize the hidapi library
 	res = hid_exit();
 
-	return 0;
+	return res;
 }
-
