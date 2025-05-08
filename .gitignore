@@ -1,11 +1,1 @@
-/target
-
-*.a
-*.o
-*.so
-*.out
-
-main
-main.exe
-
 .cache/
