@@ -8,7 +8,7 @@
 
 #define MAX_STR 255
 
-int main(int argc, char* argv[])
+int main(void)
 {
 	int res = 0;
 
