@@ -1,10 +1,6 @@
 #include <stdio.h> // printf
-#include <wchar.h> // wchar_t
-#include <stdlib.h> // malloc, free
 
-#include <hidapi/hidapi.h> // hidapi
-
-#include "device.h" // device.h
+#include "device.h" // device.h, hidapi
 
 #define MAX_STR 255
 

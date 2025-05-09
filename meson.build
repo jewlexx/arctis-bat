@@ -1,4 +1,4 @@
-project('arctis-bat', 'c')
+project('arctis-bat', 'c', version: '0.1.0')
 
 hidapi_dep = dependency('hidapi-hidraw')
 
