@@ -9,6 +9,5 @@ executable(
   'main.c',
   dependencies: [hidapi_dep],
   link_with: lib,
-  # install: true,
-  # install_dir: get_option('libexecdir'),
+  install: true,
 )
