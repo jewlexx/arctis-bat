@@ -45,7 +45,7 @@ int main(int argc, char* argv[])
 
 
     char* charging_status = get_pretty_charging_status(status.status);
-    printf("Charging Status: %s\n", charging_status);
+    printf("Charging Status: %s (%d)\n", charging_status, status.status);
     printf("Battery Level: %.2f%%\n", status.battery_level);
 
 	// Close the device
