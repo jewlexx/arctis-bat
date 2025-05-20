@@ -2,6 +2,8 @@
 #define VENDOR_ID 0x1038
 #define PRODUCT_ID 0x2202
 
+#define PRODUCT_ID_WIRED 0x2200
+
 typedef enum
 {
     DISCONNECTED = 0x00,
