@@ -2,8 +2,13 @@
 
 #include "device.h"
 
-int get_device_status(hid_device *handle, device_status *status)
+int get_device_status(void *handle, device_status *status)
 {
+    handle = (hid_device *)handle;
+    if (handle == NULL) {
+        return -1;
+    }
+
     unsigned char buf[4];
     int res;
 

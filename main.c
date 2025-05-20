@@ -1,5 +1,7 @@
 #include <stdio.h> // printf
 
+#include <hidapi.h>
+
 #include "device.h" // device.h, hidapi
 
 #define MAX_STR 255

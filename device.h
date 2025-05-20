@@ -1,5 +1,3 @@
-#include <hidapi/hidapi.h>
-
 // Steelseries Vendor ID
 #define VENDOR_ID 0x1038
 #define PRODUCT_ID 0x2202
@@ -16,6 +14,6 @@ typedef struct {
     float battery_level;
 } device_status;
 
-int get_device_status(hid_device *handle, device_status *status);
+int get_device_status(void *handle, device_status *status);
 
 char* get_pretty_charging_status(charging_status status);
