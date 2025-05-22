@@ -4,4 +4,4 @@ name = "arctisbat"
 version = "0.1.0"
 
 [dependencies]
-hidapi = "2.6.3"
+hidapi = { version = "2.6.3", default-features = false, features = ["linux-shared-hidraw"] }

@@ -1,7 +1,7 @@
 use std::{fmt::Display, rc::Rc};
 
 pub const VENDOR_ID: u16 = 0x1038;
-pub const PRODUCT_ID: u16 = 0x2022;
+pub const PRODUCT_ID: u16 = 0x2202;
 pub const PRODUCT_ID_WIRED: u16 = 0x2000;
 
 #[repr(u8)]
@@ -34,16 +34,18 @@ impl Display for ChargingStatus {
 
 #[derive(Debug, Clone)]
 pub struct DeviceStatus {
-    device: Rc<hidapi::HidDevice>,
-    status: ChargingStatus,
-    battery_level: f32,
+    pub device: Rc<hidapi::HidDevice>,
+    pub status: ChargingStatus,
+    pub battery_level: f32,
 }
 
 impl DeviceStatus {
     const REQUEST: [u8; 2] = [0x00, 0xb0];
 
     pub fn new() -> Result<Self, hidapi::HidError> {
-        let api = hidapi::HidApi::new()?;
+        let mut api = hidapi::HidApi::new_without_enumerate()?;
+
+        api.add_devices(VENDOR_ID, 0)?;
 
         let device = api.open(VENDOR_ID, PRODUCT_ID)?;
 
