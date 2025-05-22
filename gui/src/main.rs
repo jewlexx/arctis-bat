@@ -33,7 +33,7 @@ mod timer;
 use std::time::Duration;
 
 use arctisbat::DeviceStatus;
-use eframe::egui;
+use eframe::egui::{self, ProgressBar};
 use timer::Timer;
 
 fn main() {
@@ -71,11 +71,22 @@ impl eframe::App for MyEguiApp {
         }
 
         egui::CentralPanel::default().show(ctx, |ui| {
-            ui.heading("Hello World!");
             ui.heading(format!(
                 "{:.02}% ({})",
                 self.device_status.battery_level, self.device_status.status
             ));
+
+            let color = match self.device_status.battery_level {
+                0.0..25.1 => egui::Color32::from_rgb(255, 0, 0),
+                25.1..75.1 => egui::Color32::from_rgb(255, 165, 0),
+                75.1..100.0 => egui::Color32::from_rgb(0, 255, 0),
+                _ => egui::Color32::from_black_alpha(100),
+            };
+            ui.add(
+                ProgressBar::new(self.device_status.battery_level / 100.0)
+                    .show_percentage()
+                    .fill(color),
+            );
         });
     }
 }
