@@ -14,7 +14,7 @@ typedef struct {
     int battery_percentage_index;
     int charging_status_index;
     int connected_status_index;
-    uint16_t usage_pageand_id[2];
+    uint16_t usage_page_and_id[2];
     int read_buffer_size;
     uint16_t battery_range[2];
 } device_identifier;

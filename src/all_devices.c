@@ -2,84 +2,244 @@
 
 const device_identifier known_headphones[] = {
     {
-        "Arctis Pro Wireless", 0x1290, {0x40, 0xaa},
-        NULL, 0, NULL, NULL, NULL, 2, {0x00, 0x04}
+        .name = "Arctis Pro Wireless",
+        .product_id = 0x1290,
+        .write_bytes = {0x40, 0xaa},
+        .interface_number = 0,
+        .battery_percentage_index = 0,
+        .charging_status_index = 0,
+        .connected_status_index = 0,
+        .usage_page_and_id = 0,
+        .read_buffer_size = 2,
+        .battery_range = {0x00, 0x04}
     },
     {
-        "Arctis 7 2017", 0x1260, {0x06, 0x18},
-        5, 2, NULL, NULL, NULL, 8, {0x00, 0x04}
+        .name = "Arctis 7 2017",
+        .product_id = 0x1260,
+        .write_bytes = {0x06, 0x18},
+        .interface_number = 5,
+        .battery_percentage_index = 2,
+        .charging_status_index = 0,
+        .connected_status_index = 0,
+        .usage_page_and_id = 0,
+        .read_buffer_size = 8,
+        .battery_range = {0x00, 0x04}
     },
     {
-        "Arctis 7 2019", 0x12ad, {0x06, 0x18},
-        5, 2, NULL, NULL, NULL, 8, {0x00, 0x04}
+        .name = "Arctis 7 2019",
+        .product_id = 0x12ad,
+        .write_bytes = {0x06, 0x18},
+        .interface_number = 5,
+        .battery_percentage_index = 2,
+        .charging_status_index = 0,
+        .connected_status_index = 0,
+        .usage_page_and_id = 0,
+        .read_buffer_size = 8,
+        .battery_range = {0x00, 0x04}
     },
     {
-        "Arctis Pro 2019", 0x1252, {0x06, 0x18},
-        5, 2, NULL, NULL, NULL, 8, {0x00, 0x04}
+        .name = "Arctis Pro 2019",
+        .product_id = 0x1252,
+        .write_bytes = {0x06, 0x18},
+        .interface_number = 5,
+        .battery_percentage_index = 2,
+        .charging_status_index = 0,
+        .connected_status_index = 0,
+        .usage_page_and_id = 0,
+        .read_buffer_size = 8,
+        .battery_range = {0x00, 0x04}
     },
     {
-        "Arctis Pro GameDac", 0x1280, {0x06, 0x18},
-        5, 2, NULL, NULL, NULL, 8, {0x00, 0x04}
+        .name = "Arctis Pro GameDac",
+        .product_id = 0x1280,
+        .write_bytes = {0x06, 0x18},
+        .interface_number = 5,
+        .battery_percentage_index = 2,
+        .charging_status_index = 0,
+        .connected_status_index = 0,
+        .usage_page_and_id = 0,
+        .read_buffer_size = 8,
+        .battery_range = {0x00, 0x04}
     },
     {
-        "Arctis 9", 0x12c2, {0x00, 0x20},
-        NULL, 3, 4, 1, NULL, 12, {0x64, 0xa5}
+        .name = "Arctis 9",
+        .product_id = 0x12c2,
+        .write_bytes = {0x00, 0x20},
+        .interface_number = 0,
+        .battery_percentage_index = 3,
+        .charging_status_index = 4,
+        .connected_status_index = 1,
+        .usage_page_and_id = 0,
+        .read_buffer_size = 12,
+        .battery_range = {0x64, 0xa5}
     },
     {
-        "Arctis 1 Wireless", 0x12b3, {0x06, 0x12},
-        3, 3, 4, NULL, {0xff43, 0x202}, 8, {0x00, 0x04}
+        .name = "Arctis 1 Wireless",
+        .product_id = 0x12b3,
+        .write_bytes = {0x06, 0x12},
+        .interface_number = 3,
+        .battery_percentage_index = 3,
+        .charging_status_index = 4,
+        .connected_status_index = 0,
+        .usage_page_and_id = {0xff43, 0x202},
+        .read_buffer_size = 8,
+        .battery_range = {0x00, 0x04}
     },
     {
-        "Arctis 1 Xbox", 0x12b6, {0x06, 0x12},
-        3, 3, 4, NULL, {0xff43, 0x202}, 8, {0x00, 0x04}
+        .name = "Arctis 1 Xbox",
+        .product_id = 0x12b6,
+        .write_bytes = {0x06, 0x12},
+        .interface_number = 3,
+        .battery_percentage_index = 3,
+        .charging_status_index = 4,
+        .connected_status_index = 0,
+        .usage_page_and_id = {0xff43, 0x202},
+        .read_buffer_size = 8,
+        .battery_range = {0x00, 0x04}
     },
     {
-        "Arctis 7X", 0x12d7, {0x06, 0x12},
-        3, 3, 4, NULL, {0xff43, 0x202}, 8, {0x00, 0x04}
+        .name = "Arctis 7X",
+        .product_id = 0x12d7,
+        .write_bytes = {0x06, 0x12},
+        .interface_number = 3,
+        .battery_percentage_index = 3,
+        .charging_status_index = 4,
+        .connected_status_index = 0,
+        .usage_page_and_id = {0xff43, 0x202},
+        .read_buffer_size = 8,
+        .battery_range = {0x00, 0x04}
     },
     {
-        "Arctis 7 Plus", 0x220e, {0x00, 0xb0},
-        3, 2, 3, NULL, {0xffc0, 0x1}, 8, {0x00, 0x04}
+        .name = "Arctis 7 Plus",
+        .product_id = 0x220e,
+        .write_bytes = {0x00, 0xb0},
+        .interface_number = 3,
+        .battery_percentage_index = 2,
+        .charging_status_index = 3,
+        .connected_status_index = 0,
+        .usage_page_and_id = {0xffc0, 0x1},
+        .read_buffer_size = 8,
+        .battery_range = {0x00, 0x04}
     },
     {
-        "Arctis 7P Plus", 0x2212, {0x00, 0xb0},
-        3, 2, 3, NULL, {0xffc0, 0x1}, 6, {0x00, 0x04}
+        .name = "Arctis 7P Plus",
+        .product_id = 0x2212,
+        .write_bytes = {0x00, 0xb0},
+        .interface_number = 3,
+        .battery_percentage_index = 2,
+        .charging_status_index = 3,
+        .connected_status_index = 0,
+        .usage_page_and_id = {0xffc0, 0x1},
+        .read_buffer_size = 6,
+        .battery_range = {0x00, 0x04}
     },
     {
-        "Arctis 7X Plus", 0x2216, {0x00, 0xb0},
-        3, 2, 3, NULL, {0xffc0, 0x1}, 6, {0x00, 0x04}
+        .name = "Arctis 7X Plus",
+        .product_id = 0x2216,
+        .write_bytes = {0x00, 0xb0},
+        .interface_number = 3,
+        .battery_percentage_index = 2,
+        .charging_status_index = 3,
+        .connected_status_index = 0,
+        .usage_page_and_id = {0xffc0, 0x1},
+        .read_buffer_size = 6,
+        .battery_range = {0x00, 0x04}
     },
     {
-        "Arctis 7 Destiny Plus", 0x2236, {0x00, 0xb0},
-        3, 2, 3, NULL, {0xffc0, 0x1}, 6, {0x00, 0x04}
+        .name = "Arctis 7 Destiny Plus",
+        .product_id = 0x2236,
+        .write_bytes = {0x00, 0xb0},
+        .interface_number = 3,
+        .battery_percentage_index = 2,
+        .charging_status_index = 3,
+        .connected_status_index = 0,
+        .usage_page_and_id = {0xffc0, 0x1},
+        .read_buffer_size = 6,
+        .battery_range = {0x00, 0x04}
     },
     {
-        "Arctis Nova 7", 0x2202, {0x00, 0xb0},
-        3, 2, 3, NULL, {0xffc0, 0x1}, 8, {0x00, 0x04}
+        .name = "Arctis Nova 7",
+        .product_id = 0x2202,
+        .write_bytes = {0x00, 0xb0},
+        .interface_number = 3,
+        .battery_percentage_index = 2,
+        .charging_status_index = 3,
+        .connected_status_index = 0,
+        .usage_page_and_id = {0xffc0, 0x1},
+        .read_buffer_size = 8,
+        .battery_range = {0x00, 0x04}
     },
     {
-        "Arctis Nova 7X", 0x2206, {0x00, 0xb0},
-        3, 2, 3, NULL, {0xffc0, 0x1}, 8, {0x00, 0x04}
+        .name = "Arctis Nova 7X",
+        .product_id = 0x2206,
+        .write_bytes = {0x00, 0xb0},
+        .interface_number = 3,
+        .battery_percentage_index = 2,
+        .charging_status_index = 3,
+        .connected_status_index = 0,
+        .usage_page_and_id = {0xffc0, 0x1},
+        .read_buffer_size = 8,
+        .battery_range = {0x00, 0x04}
     },
     {
-        "Arctis Nova 7X v2", 0x2258, {0x00, 0xb0},
-        3, 2, 3, NULL, {0xffc0, 0x1}, 8, {0x00, 0x04}
+        .name = "Arctis Nova 7X v2",
+        .product_id = 0x2258,
+        .write_bytes = {0x00, 0xb0},
+        .interface_number = 3,
+        .battery_percentage_index = 2,
+        .charging_status_index = 3,
+        .connected_status_index = 0,
+        .usage_page_and_id = {0xffc0, 0x1},
+        .read_buffer_size = 8,
+        .battery_range = {0x00, 0x04}
     },
     {
-        "Arctis Nova 7P", 0x220a, {0x00, 0xb0},
-        3, 2, 3, NULL, {0xffc0, 0x1}, 8, {0x00, 0x04}
+        .name = "Arctis Nova 7P",
+        .product_id = 0x220a,
+        .write_bytes = {0x00, 0xb0},
+        .interface_number = 3,
+        .battery_percentage_index = 2,
+        .charging_status_index = 3,
+        .connected_status_index = 0,
+        .usage_page_and_id = {0xffc0, 0x1},
+        .read_buffer_size = 8,
+        .battery_range = {0x00, 0x04}
     },
     {
-        "Arctis Nova 7 Diablo IV", 0x223a, {0x00, 0xb0},
-        3, 2, 3, NULL, {0xffc0, 0x1}, 8, {0x00, 0x04}
+        .name = "Arctis Nova 7 Diablo IV",
+        .product_id = 0x223a,
+        .write_bytes = {0x00, 0xb0},
+        .interface_number = 3,
+        .battery_percentage_index = 2,
+        .charging_status_index = 3,
+        .connected_status_index = 0,
+        .usage_page_and_id = {0xffc0, 0x1},
+        .read_buffer_size = 8,
+        .battery_range = {0x00, 0x04}
     },
     {
-        "Arctis Nova 5", 0x2232, {0x00, 0xb0},
-        3, 3, 4, NULL, {0xffc0, 0x1}, 64, {0x00, 0x64}
+        .name = "Arctis Nova 5",
+        .product_id = 0x2232,
+        .write_bytes = {0x00, 0xb0},
+        .interface_number = 3,
+        .battery_percentage_index = 3,
+        .charging_status_index = 4,
+        .connected_status_index = 0,
+        .usage_page_and_id = {0xffc0, 0x1},
+        .read_buffer_size = 64,
+        .battery_range = {0x00, 0x64}
     },
     {
-        "Arctis Nova 5X", 0x2253, {0x00, 0xb0},
-        3, 3, 4, NULL, {0xffc0, 0x1}, 128, {0x00, 0x04}
+        .name = "Arctis Nova 5X",
+        .product_id = 0x2253,
+        .write_bytes = {0x00, 0xb0},
+        .interface_number = 3,
+        .battery_percentage_index = 3,
+        .charging_status_index = 4,
+        .connected_status_index = 0,
+        .usage_page_and_id = {0xffc0, 0x1},
+        .read_buffer_size = 128,
+        .battery_range = {0x00, 0x04}
     }
 };
 const size_t known_headphones_count = sizeof(known_headphones) / sizeof(known_headphones[0]);
