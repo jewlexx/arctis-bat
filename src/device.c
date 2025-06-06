@@ -1,6 +1,6 @@
 #include <hidapi/hidapi.h>
 
-#include "device.h"
+#include "include/device.h"
 
 int get_device_status(void *handle, device_status *status)
 {

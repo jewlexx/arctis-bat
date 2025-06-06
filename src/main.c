@@ -1,6 +1,6 @@
 #include <stdio.h> // printf
 
-#include <hidapi.h>
+#include <hidapi/hidapi.h>
 
 #include "device.h" // device.h, hidapi
 
