@@ -1,11 +1,9 @@
 #pragma once
 #include <stdint.h>
+#include <stddef.h>
 
 // Steelseries Vendor ID
 #define VENDOR_ID 0x1038
-#define PRODUCT_ID 0x2202
-
-#define PRODUCT_ID_WIRED 0x2200
 
 typedef struct {
     const char *name;
@@ -35,3 +33,4 @@ typedef struct {
 int get_device_status(void *handle, const device_identifier *device_id, device_status *status);
 
 const char* get_pretty_charging_status(charging_status status);
+

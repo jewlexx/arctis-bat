@@ -1,8 +1,6 @@
 #pragma once
-#include <stddef.h>
 
 #include "device.h"
-
 #include "drivers/arctis_pro_wireless.h"
 #include "drivers/arctis_7_2017.h"
 #include "drivers/arctis_7_2019.h"

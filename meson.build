@@ -5,7 +5,7 @@ hidapi_dep = dependency('hidapi-hidraw')
 lib = static_library(
   'device-code',
   'src/device.c',
-  'src/all_devices.c',
+  'src/drivers.c',
   'src/drivers/arctis_pro_wireless.c',
   'src/drivers/arctis_7_2017.c',
   'src/drivers/arctis_7_2019.c',

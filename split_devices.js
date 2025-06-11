@@ -266,7 +266,7 @@ const devices = inupt.split("\n\n").map((device) => {
     name: device_name,
     content: device.trim(),
     c_code: `#include "include/drivers/${device_name}.h"\n\n${device.trim()}\n`,
-    h_code: `#include "include/device.h"\n#ifndef ${device_name.toUpperCase()}_H\nextern const device_identifier ${device_name};\n#endif\n`,
+    h_code: `#pragma once\n#include "include/device.h"\nextern const device_identifier ${device_name};\n`,
     meson_file: `src/drivers/${device_name}.c`,
     include_header: `#include "include/drivers/${device_name}.h"`,
   };

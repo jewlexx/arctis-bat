@@ -1,8 +1,9 @@
 #include <stdio.h> // printf
 
-#include <hidapi/hidapi.h>
+#include <hidapi/hidapi.h> // hidapi
 
-#include "all_devices.h" // all_devices.h, device.h, hidapi
+#include "drivers.h" // drivers.h
+#include "device.h" // device.h
 
 #define MAX_STR 255
 
