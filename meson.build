@@ -3,7 +3,7 @@ project('arctis-bat', 'c', version: '0.1.0')
 hidapi_dep = dependency('hidapi-hidraw')
 
 lib = static_library(
-  'device-code',
+  'arctis-devices',
   'src/device.c',
   'src/drivers.c',
   'src/drivers/arctis_pro_wireless.c',
