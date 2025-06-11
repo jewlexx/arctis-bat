@@ -38,13 +38,14 @@ int main(void)
 			// Read the Product String
 			res = hid_get_product_string(handle, wstr, MAX_STR);
 
-			char manustring[MAX_STR];
-			wcstombs(manustring, wstr, wcslen(wstr));
+			size_t manustring_length = wcslen(wstr);
+			char *manustring = malloc(manustring_length * sizeof(wchar_t));
+			wcstombs(manustring, wstr, manustring_length);
 
 			if (strncmp(manustring, device_id->name, strlen(device_id->name)) == 0) {
 				printf("Product string matches expected model: %s\n", manustring);
 			} else {
-				printf("Device does not match expected model: %s\n", device_id->name);
+				printf("Device does not match expected model: %s != %s\n", device_id->name, manustring);
 				printf("Trying next device...\n");
 				hid_close(handle);
 				handle = NULL;
