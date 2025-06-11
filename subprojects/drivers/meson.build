@@ -1,4 +1,4 @@
-project('drivers', 'c', version: '0.1.0')
+project('drivers', 'c', version: '0.1.1')
 
 drivers_incdir = include_directories('include')
 
