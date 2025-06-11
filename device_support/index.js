@@ -25,7 +25,7 @@ const devices = all_devices.map((device) => {
 
   return {
     name: ident,
-    c_code: `#include "drivers/include/drivers/${ident}.h"\n\n${c_instantiation}\n`,
+    c_code: `#include "drivers/${ident}.h"\n\n${c_instantiation}\n`,
     h_code: `#pragma once\n#include "../drivers.h"\nextern const device_identifier ${ident};\n`,
     meson_file: `src/drivers/${ident}.c`,
     include_header: `#include "include/drivers/${ident}.h"`,

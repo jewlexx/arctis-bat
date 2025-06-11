@@ -1,4 +1,4 @@
-#include "drivers/include/drivers.h"
+#include "drivers.h"
 
 const device_identifier *all_headphone_models[HEADPHONE_COUNT] = {
     &arctis_pro_wireless,

@@ -1,4 +1,4 @@
-#include "drivers/include/drivers/arctis_pro_wireless.h"
+#include "drivers/arctis_pro_wireless.h"
 
 const device_identifier arctis_pro_wireless = {
     .name = "Arctis Pro Wireless",

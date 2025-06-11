@@ -1,4 +1,4 @@
-#include "drivers/include/drivers/arctis_7_destiny_plus.h"
+#include "drivers/arctis_7_destiny_plus.h"
 
 const device_identifier arctis_7_destiny_plus = {
     .name = "Arctis 7 Destiny Plus",
