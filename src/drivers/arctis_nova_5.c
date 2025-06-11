@@ -8,7 +8,7 @@ const device_identifier arctis_nova_5 = {
     .battery_percentage_index = 3,
     .charging_status_index = 4,
     .connected_status_index = 0,
-    .usage_page_and_id = {0xffc0, 0x1},
+    .usage_page_and_id = {0xffc0, 0x01},
     .read_buffer_size = 64,
     .battery_range = {0x00, 0x64}
 };
