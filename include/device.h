@@ -31,6 +31,6 @@ typedef struct {
     float battery_level;
 } device_status;
 
-int get_device_status(void *handle, device_status *status);
+int get_device_status(void *handle, const device_identifier *device_id, device_status *status);
 
 const char* get_pretty_charging_status(charging_status status);

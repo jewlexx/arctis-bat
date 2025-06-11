@@ -13,17 +13,21 @@ int main(void)
 	// Initialize the hidapi library
 	res = hid_init();
 
+	const device_identifier *device_id;
 	// Open the device using the VID, PID,
 	// and optionally the Serial number.
 	hid_device *handle;
 
 	for (int i = 0; i < HEADPHONE_COUNT; i++)
 	{
-		hid_device *temp_handle = hid_open(VENDOR_ID, PRODUCT_ID, NULL);
+		const device_identifier *temp_device_id = all_headphone_models[i];
+		hid_device *temp_handle = hid_open(VENDOR_ID, temp_device_id->product_id, NULL);
 
 		if (temp_handle)
 		{
 			handle = temp_handle;
+			device_id = temp_device_id;
+			printf("Found device: %s (PID: 0x%04x)\n", device_id->name, device_id->product_id);
 			break;
 		}
 	}
@@ -47,7 +51,7 @@ int main(void)
 
 	device_status status = {};
 
-    if (get_device_status(handle, &status) < 0) {
+    if (get_device_status(handle, device_id, &status) < 0) {
         printf("Failed to get device status\n");
         hid_close(handle);
         hid_exit();

@@ -2,19 +2,18 @@
 
 #include "include/device.h"
 
-int get_device_status(void *handle, device_status *status)
+int get_device_status(void *handle, const device_identifier *device_id, device_status *status)
 {
     handle = (hid_device *)handle;
     if (handle == NULL) {
         return -1;
     }
 
-    unsigned char buf[4];
     int res;
 
-    unsigned char request_buf[2] = { 0x00, 0xb0 };
-    res = hid_write(handle, request_buf, 2);
+    res = hid_write(handle, device_id->write_bytes, 2);
 
+    unsigned char buf[4];
     // Read requested state
     res = hid_read(handle, buf, 4);
 
@@ -22,8 +21,8 @@ int get_device_status(void *handle, device_status *status)
         return -1;
     }
 
-    status->status = (charging_status)buf[3];
-    status->battery_level = ((float)buf[2] / 4.0f) * 100.0f;
+    status->status = (charging_status)buf[device_id->charging_status_index];
+    status->battery_level = ((float)buf[device_id->battery_percentage_index] / 4.0f) * 100.0f;
 
     return 0;
 }
