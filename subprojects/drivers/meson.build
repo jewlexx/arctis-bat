@@ -2,7 +2,7 @@ project('drivers', 'c', version: '0.1.0')
 
 drivers_incdir = include_directories('include')
 
-drivers = static_library(
+drivers = shared_library(
   'arctis-drivers',
   'src/drivers.c',
   'src/drivers/arctis_pro_wireless.c',
