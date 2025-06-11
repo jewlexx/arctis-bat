@@ -26,7 +26,12 @@ drivers = shared_library(
   'src/drivers/arctis_nova_5.c',
   'src/drivers/arctis_nova_5x.c',
   include_directories: drivers_incdir,
-  install: true
+  install: true,
+  c_args: [
+    '-Wall',
+    '-Wextra',
+    '-Wpedantic',
+  ],
 )
 
 drivers_dep = declare_dependency(
