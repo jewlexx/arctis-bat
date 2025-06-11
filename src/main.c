@@ -1,4 +1,6 @@
 #include <stdio.h> // printf
+#include <string.h>
+#include <stdlib.h>
 
 #include <hidapi/hidapi.h> // hidapi
 
@@ -28,7 +30,29 @@ int main(void)
 		{
 			handle = temp_handle;
 			device_id = temp_device_id;
-			printf("Found device: %s (PID: 0x%04x)\n", device_id->name, device_id->product_id);
+			printf("Found device! (PID: 0x%04x)\n", device_id->product_id);
+
+			wchar_t wstr[MAX_STR];
+
+			// Read the Product String
+			res = hid_get_product_string(handle, wstr, MAX_STR);
+
+			char manustring[MAX_STR];
+			wcstombs(manustring, wstr, wcslen(wstr));
+
+			if (strncmp(manustring, device_id->name, strlen(device_id->name)) == 0) {
+				printf("Product string matches expected model: %s\n", manustring);
+			} else {
+				printf("Device does not match expected model: %s\n", device_id->name);
+				printf("Trying next device...\n");
+				hid_close(handle);
+				handle = NULL;
+				continue; // Skip to the next device
+			}
+
+			res = hid_get_manufacturer_string(handle, wstr, MAX_STR);
+			printf("Manufacturer String: %ls\n", wstr);
+
 			break;
 		}
 	}
@@ -40,19 +64,10 @@ int main(void)
 		return 1;
 	}
 
-	wchar_t wstr[MAX_STR];
 
-	// Read the Manufacturer String
-	res = hid_get_manufacturer_string(handle, wstr, MAX_STR);
-	printf("Manufacturer String: %ls\n", wstr);
+	device_status *status = malloc(sizeof(device_status));
 
-	// Read the Product String
-	res = hid_get_product_string(handle, wstr, MAX_STR);
-	printf("Product String: %ls\n", wstr);
-
-	device_status status = {};
-
-    if (get_device_status(handle, device_id, &status) < 0) {
+    if (get_device_status(handle, device_id, status) < 0) {
         printf("Failed to get device status\n");
         hid_close(handle);
         hid_exit();
@@ -60,9 +75,9 @@ int main(void)
     }
 
 
-    const char* charging_status = get_pretty_charging_status(status.status);
-    printf("Charging Status: %s (%d)\n", charging_status, status.status);
-    printf("Battery Level: %.2f%%\n", status.battery_level);
+    const char* charging_status = get_pretty_charging_status(status->status);
+    printf("Charging Status: %s (%d)\n", charging_status, status->status);
+    printf("Battery Level: %.2f%%\n", status->battery_level);
 
 	// Close the device
 	hid_close(handle);
