@@ -4,7 +4,8 @@
 
 #include <hidapi/hidapi.h> // hidapi
 
-#include "drivers.h" // drivers.h
+#include <drivers/include/drivers.h> // drivers.h
+
 #include "device.h" // device.h
 
 #define MAX_STR 255
