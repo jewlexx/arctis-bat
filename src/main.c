@@ -13,14 +13,14 @@
 int main(void)
 {
 	int res = 0;
+	const device_identifier *device_id;
+	hid_device *handle = NULL;
 
 	// Initialize the hidapi library
-	res = hid_init();
-
-	const device_identifier *device_id;
-	// Open the device using the VID, PID,
-	// and optionally the Serial number.
-	hid_device *handle;
+	if (hid_init() < 0)  {
+		res = -1;
+		goto cleanup;
+	}
 
 	for (int i = 0; i < HEADPHONE_COUNT; i++)
 	{
@@ -52,6 +52,8 @@ int main(void)
 				continue; // Skip to the next device
 			}
 
+			free(manustring);
+
 			res = hid_get_manufacturer_string(handle, wstr, MAX_STR);
 			printf("Manufacturer String: %ls\n", wstr);
 
@@ -62,30 +64,38 @@ int main(void)
 	if (!handle)
 	{
 		printf("Unable to find any supported devices\n");
-		hid_exit();
-		return 1;
+		res = 1;
+		goto cleanup;
 	}
-
 
 	device_status *status = malloc(sizeof(device_status));
 
     if (get_device_status(handle, device_id, status) < 0) {
         printf("Failed to get device status\n");
-        hid_close(handle);
-        hid_exit();
-        return 1;
-    }
+		res = 1;
+		goto cleanup;
+	}
 
 
     const char* charging_status = get_pretty_charging_status(status->status);
     printf("Charging Status: %s (%d)\n", charging_status, status->status);
     printf("Battery Level: %.2f%%\n", status->battery_level);
 
+	free(status);
+
+	cleanup:
+	if (res < 0) {
+		const wchar_t *error = hid_error(NULL); // Get the last error
+		printf("An error occurred: %ls\n", error);
+	}
+
 	// Close the device
 	hid_close(handle);
 
 	// Finalize the hidapi library
-	res = hid_exit();
+	if (hid_exit() < 0) {
+		res = -1;
+	}
 
 	return res;
 }
