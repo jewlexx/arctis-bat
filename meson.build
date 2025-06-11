@@ -1,4 +1,4 @@
-project('arctis-bat', 'c', version: '0.1.2')
+project('arctis-bat', 'c', version: '0.2.0')
 
 hidapi_dep = dependency('hidapi-hidraw')
 
@@ -18,7 +18,7 @@ endif
 c_args += ['-Wall', '-Wextra', '-Wpedantic']
 
 executable(
-  'arctisbat',
+  'arctis-bat',
   'src/main.c',
   'src/device.c',
   dependencies: [hidapi_dep, drivers_dep],
