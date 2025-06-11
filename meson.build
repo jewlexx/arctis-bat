@@ -27,7 +27,7 @@ lib = static_library(
   'drivers/src/drivers/arctis_nova_7_diablo_iv.c',
   'drivers/src/drivers/arctis_nova_5.c',
   'drivers/src/drivers/arctis_nova_5x.c',
-  include_directories: drivers_incdir
+  include_directories: drivers_incdir,
 )
 
 incdir = include_directories('include')
@@ -35,6 +35,7 @@ incdir = include_directories('include')
 executable(
   'arctisbat',
   'src/main.c',
+  'src/device.c',
   dependencies: [hidapi_dep],
   include_directories: incdir,
   link_with: lib,
