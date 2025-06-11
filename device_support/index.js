@@ -25,8 +25,8 @@ const devices = all_devices.map((device) => {
 
   return {
     name: ident,
-    c_code: `#include "include/drivers/${ident}.h"\n\n${c_instantiation}\n`,
-    h_code: `#pragma once\n#include "include/device.h"\nextern const device_identifier ${ident};\n`,
+    c_code: `#include "drivers/include/drivers/${ident}.h"\n\n${c_instantiation}\n`,
+    h_code: `#pragma once\n#include "../drivers.h"\nextern const device_identifier ${ident};\n`,
     meson_file: `src/drivers/${ident}.c`,
     include_header: `#include "include/drivers/${ident}.h"`,
   };
@@ -35,11 +35,11 @@ const devices = all_devices.map((device) => {
 console.log(devices);
 
 for (const device of devices) {
-  fs.writeFileSync(`src/drivers/${device.name}.c`, device.c_code);
+  fs.writeFileSync(`drivers/src/drivers/${device.name}.c`, device.c_code);
   console.log(`'${device.meson_file}',`);
 }
 
 for (const device of devices) {
-  fs.writeFileSync(`include/drivers/${device.name}.h`, device.h_code);
+  fs.writeFileSync(`drivers/include/drivers/${device.name}.h`, device.h_code);
   console.log(`${device.include_header}`);
 }

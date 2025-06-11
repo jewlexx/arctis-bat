@@ -1,4 +1,4 @@
-#include "include/drivers/arctis_pro_gamedac.h"
+#include "drivers/include/drivers/arctis_pro_gamedac.h"
 
 const device_identifier arctis_pro_gamedac = {
     .name = "Arctis Pro GameDac",

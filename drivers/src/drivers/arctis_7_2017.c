@@ -1,4 +1,4 @@
-#include "include/drivers/arctis_7_2017.h"
+#include "drivers/include/drivers/arctis_7_2017.h"
 
 const device_identifier arctis_7_2017 = {
     .name = "Arctis 7 2017",

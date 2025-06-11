@@ -1,4 +1,4 @@
-#include "include/drivers/arctis_nova_7x.h"
+#include "drivers/include/drivers/arctis_nova_7x.h"
 
 const device_identifier arctis_nova_7x = {
     .name = "Arctis Nova 7X",

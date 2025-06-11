@@ -1,4 +1,4 @@
-#include "include/drivers/arctis_1_xbox.h"
+#include "drivers/include/drivers/arctis_1_xbox.h"
 
 const device_identifier arctis_1_xbox = {
     .name = "Arctis 1 Xbox",

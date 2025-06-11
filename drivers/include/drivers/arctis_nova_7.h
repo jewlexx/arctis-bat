@@ -1,3 +1,3 @@
 #pragma once
-#include "include/device.h"
+#include "../drivers.h"
 extern const device_identifier arctis_nova_7;
