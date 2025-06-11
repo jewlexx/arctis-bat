@@ -1,7 +1,7 @@
 #pragma once
 #include <stdint.h>
 #include <stddef.h>
-#include <drivers/include/drivers.h>
+#include <drivers.h>
 
 typedef enum
 {
