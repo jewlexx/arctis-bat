@@ -260,8 +260,6 @@ const device_identifier arctis_nova_5x = {
     .battery_range = {0x00, 0x04}
 };
 
-#define HEADPHONE_COUNT 20
-
 const device_identifier *all_headphone_models[HEADPHONE_COUNT] = {
     &arctis_pro_wireless,
     &arctis_7_2017,

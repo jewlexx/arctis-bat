@@ -28,7 +28,7 @@ int get_device_status(void *handle, device_status *status)
     return 0;
 }
 
-char* get_pretty_charging_status(charging_status status) {
+const char* get_pretty_charging_status(charging_status status) {
     switch (status) {
         case CHARGING:
             return "Charging";

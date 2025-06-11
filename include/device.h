@@ -33,4 +33,4 @@ typedef struct {
 
 int get_device_status(void *handle, device_status *status);
 
-char* get_pretty_charging_status(charging_status status);
+const char* get_pretty_charging_status(charging_status status);

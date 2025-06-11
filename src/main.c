@@ -2,7 +2,7 @@
 
 #include <hidapi/hidapi.h>
 
-#include "device.h" // device.h, hidapi
+#include "all_devices.h" // all_devices.h, device.h, hidapi
 
 #define MAX_STR 255
 
@@ -15,11 +15,24 @@ int main(void)
 
 	// Open the device using the VID, PID,
 	// and optionally the Serial number.
-	hid_device *handle = hid_open(VENDOR_ID, PRODUCT_ID, NULL);
-	if (!handle) {
-		printf("Unable to open device\n");
+	hid_device *handle;
+
+	for (int i = 0; i < HEADPHONE_COUNT; i++)
+	{
+		hid_device *temp_handle = hid_open(VENDOR_ID, PRODUCT_ID, NULL);
+
+		if (temp_handle)
+		{
+			handle = temp_handle;
+			break;
+		}
+	}
+
+	if (!handle)
+	{
+		printf("Unable to find any supported devices\n");
 		hid_exit();
- 		return 1;
+		return 1;
 	}
 
 	wchar_t wstr[MAX_STR];
@@ -42,7 +55,7 @@ int main(void)
     }
 
 
-    char* charging_status = get_pretty_charging_status(status.status);
+    const char* charging_status = get_pretty_charging_status(status.status);
     printf("Charging Status: %s (%d)\n", charging_status, status.status);
     printf("Battery Level: %.2f%%\n", status.battery_level);
 
