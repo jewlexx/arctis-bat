@@ -1,9 +1,9 @@
-project('arctis-drivers', 'c', version: '0.1.1')
+project('arctis-devices', 'c', version: '0.1.1')
 
 drivers_incdir = include_directories('include')
 
 drivers = shared_library(
-  'arctis-drivers',
+  'arctis-devices',
   'src/devices.c',
   'src/devices/arctis_pro_wireless.c',
   'src/devices/arctis_7_2017.c',
@@ -57,7 +57,7 @@ install_headers(
   'include/devices/arctis_nova_7_diablo_iv.h',
   'include/devices/arctis_nova_5.h',
   'include/devices/arctis_nova_5x.h',
-  subdir: 'arctis-drivers',
+  subdir: 'arctis-devices',
 )
 
 drivers_dep = declare_dependency(link_with: drivers, include_directories: drivers_incdir)
