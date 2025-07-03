@@ -3,7 +3,7 @@
 
 #include <hidapi/hidapi.h> // hidapi
 
-#include <drivers.h> // drivers.h
+#include <devices.h> // drivers.h
 
 #include "device.h" // device.h
 

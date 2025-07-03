@@ -1,5 +1,6 @@
 #pragma once
 
-typedef struct {
+typedef struct
+{
     int product_id;
 } args;
