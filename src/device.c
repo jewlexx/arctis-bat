@@ -23,7 +23,7 @@ int get_device(device_identifier *device_id, hid_device **handle)
             wchar_t wstr[MAX_STR];
 
             // Read the Product String
-            int res = hid_get_product_string(handle, wstr, MAX_STR);
+            int res = hid_get_product_string(*handle, wstr, MAX_STR);
 
             if (res == 0)
             {
@@ -39,8 +39,8 @@ int get_device(device_identifier *device_id, hid_device **handle)
                 {
                     printf("Device does not match expected model: %s != %s\n", device_id->name, manustring);
                     printf("Trying next device...\n");
-                    hid_close(handle);
-                    handle = NULL;
+                    hid_close(*handle);
+                    *handle = NULL;
                     continue; // Skip to the next device
                 }
 
@@ -51,7 +51,7 @@ int get_device(device_identifier *device_id, hid_device **handle)
                 return res;
             }
 
-            res = hid_get_manufacturer_string(handle, wstr, MAX_STR);
+            res = hid_get_manufacturer_string(*handle, wstr, MAX_STR);
 
             if (res == 0)
             {

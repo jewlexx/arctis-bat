@@ -1,5 +1,4 @@
 #include <stdio.h> // printf
-#include <string.h>
 #include <stdlib.h>
 
 #include <hidapi/hidapi.h> // hidapi
@@ -11,7 +10,7 @@
 int main(void)
 {
 	int res = 0;
-	const device_identifier *device_id;
+	device_identifier *device_id = malloc(sizeof(device_identifier));
 	hid_device *handle = NULL;
 
 	// Initialize the hidapi library

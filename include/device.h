@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include <stddef.h>
 #include <drivers.h>
+#include <hidapi/hidapi.h>
 
 typedef enum
 {
