@@ -1,4 +1,4 @@
-project('arctis-devices', 'c', version: '0.1.1')
+project('arctis-devices', 'c', version: '0.2.0')
 
 drivers_incdir = include_directories('include')
 
