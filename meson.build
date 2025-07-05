@@ -2,7 +2,7 @@ project('arctis-bat', 'c', version: '0.2.1')
 
 hidapi_dep = dependency('hidapi-hidraw')
 
-driversproj = subproject('drivers')
+driversproj = subproject('arctis-devices')
 drivers_dep = driversproj.get_variable('drivers_dep')
 
 executable_incdir = include_directories('include')
